@@ -1,13 +1,14 @@
 {
   "name": "challenge",
   "version": "1.0.0",
-  "description": "Using streams to extract line data in node.",
-  "main": "stream.js",
+  "description": "Use streams to extract line data in node.",
+  "main": "analyzelines.j",
   "scripts": {
     "test": "jest --no-cache ./*"
-
   },
-  "jest": {"verbose": true},
+  "jest": {
+    "verbose": true
+  },
   "author": "Pascal Noel",
   "license": "ISC",
   "dependencies": {},

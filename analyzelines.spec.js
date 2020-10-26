@@ -1,22 +1,22 @@
-const { exec, spawn } = require('child_process');
-var Readable = require('stream').Readable; 
+const calculateBytesPerSec = require('./analyzelines.js'); 
 
-var cp = spawn('node', ['./analyzelines.js'], { stdio: ['pipe', 1, 2, 'ipc'] });
-
-function bufferToStream(buffer) { 
-  var stream = new Readable();
-  stream.push(buffer);
-  stream.push(null);
-  return stream;
-}
-
-describe("Streaming lines test", () => {
-  test("it should work with a single line", () => {
-  let result = "";
-    // actual test
-    const output = `Summary Report - ElapsedTime: 10 milisec, LengthInBytes: 8, TotalLines: 1, Rate: 800 Bytes/sec \n`;
-    const stream = bufferToStream(Buffer.from(`Line 1 \n`));
-    stream.on('data', () => {} ).pipe(cp.stdin).pipe(process.stdout)
-    expect(output).toEqual(output);
+describe("Convert bytes and miliseconds into Throughput Rate of Bytes/sec", () => {
+  test("Should be able to convert using integers.", () => {
+    const input = {
+            elapsedTime: 10,
+            lengthInBytes: 8,
+            totalLines: 1,
+          }
+    const output = 800;
+    expect(calculateBytesPerSec(input)).toEqual(output);
+  });
+  test("Should be able to convert using float values.", () => {
+    const input = {
+            elapsedTime: 20,
+            lengthInBytes: 199.47619047619045,
+            totalLines: 22,
+          }
+    const output = 9973;
+    expect(calculateBytesPerSec(input)).toEqual(output);
   });
 });
