@@ -7,6 +7,7 @@
     "test": "jest --no-cache ./*"
 
   },
+  "jest": {"verbose": true},
   "author": "Pascal Noel",
   "license": "ISC",
   "dependencies": {},

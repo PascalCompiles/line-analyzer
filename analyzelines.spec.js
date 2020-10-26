@@ -1,17 +1,22 @@
-const { spawn } = require('child_process');
+const { exec, spawn } = require('child_process');
+var Readable = require('stream').Readable; 
 
+var cp = spawn('node', ['./analyzelines.js'], { stdio: ['pipe', 1, 2, 'ipc'] });
 
-function callApp() {
-spawn('cat google.com | node index.js')
+function bufferToStream(buffer) { 
+  var stream = new Readable();
+  stream.push(buffer);
+  stream.push(null);
+  return stream;
 }
 
-describe("Stream test", () => {
+describe("Streaming lines test", () => {
   test("it should work with a single line", () => {
+  let result = "";
     // actual test
-    const input = [
-      { id: 3, url: "https://www.link3.dev" }
-    ];
-    const output = [{ id: 3, url: "https://www.link3.dev" }];
-expect(callApp()).toEqual(output);
+    const output = `Summary Report - ElapsedTime: 10 milisec, LengthInBytes: 8, TotalLines: 1, Rate: 800 Bytes/sec \n`;
+    const stream = bufferToStream(Buffer.from(`Line 1 \n`));
+    stream.on('data', () => {} ).pipe(cp.stdin).pipe(process.stdout)
+    expect(output).toEqual(output);
   });
 });
