@@ -13,6 +13,14 @@ e.g.
 
 Simply clone this repo to your desired folder, this package does not require external dependencies to run.
 
+# Testing
+
+Testing uses `jest` therefore you will need to run the following commands:
+
+`npm install`
+
+`npm run test`
+
 ## Additional Feature
 
 By default Analyze Lines will print each line to the screen, to prevent your screen from being flooded you can pass the `--clear` option to have each line cleared before the next one.
