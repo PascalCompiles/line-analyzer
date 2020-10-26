@@ -1,16 +1,6 @@
-const { exec } = require('child_process');
-var Readable = require('stream').Readable; 
+const { exec, spawn } = require('child_process');
+var fs = require('fs');
 
-function bufferToStream(buffer) { 
-  var stream = new Readable();
-  stream.push(buffer);
-  stream.push(null);
+var cp = spawn('node', ['./analyzelines.js'], { stdio: ['pipe', 1, 2, 'ipc'] });
 
-  return stream;
-}
-const singleLine = Buffer.from("hey \n")
-
-bufferToStream(singleLine).on('data', function(chunk) {  
-}).pipe(exec('node', ['./stream.js']))
-
-
+fs.createReadStream(__dirname+'/example.txt').pipe(cp.stdin).pipe(process.stdout);
