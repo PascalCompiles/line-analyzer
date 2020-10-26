@@ -1,6 +1,6 @@
-## Analyze Lines
+## Line Analyzer
 
-The Analyze Lines tool let's you get information on invidiual lines being processed in your unix pipelines.
+The Line Analyzer tool let's you get information on invidiual lines being processed in your unix pipelines.
 
 e.g.
 
