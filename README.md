@@ -1,6 +1,6 @@
 ## Line Analyzer
 
-The Line Analyzer tool let's you get information on invidiual lines being processed in your unix pipelines.
+The Line Analyzer tool let's you get information on invidiual lines being processed in your Unix pipelines.
 
 e.g.
 
@@ -11,7 +11,7 @@ e.g.
 
 ## Installation 
 
-Simply clone this repo to your desired folder, this package does not require extenral dependencies to run.
+Simply clone this repo to your desired folder, this package does not require external dependencies to run.
 
 ## Additional Feature
 
