@@ -3,15 +3,17 @@
   "version": "1.0.0",
   "description": "Use streams to extract line data in node.",
   "main": "analyzelines.j",
+  "type": "module",
   "scripts": {
-    "test": "jest --no-cache ./*"
+    "test": "jest --detectOpenHandles --forceExit ./analyzelines.spec.js "
   },
   "jest": {
-    "verbose": true
+    "verbose": true,
+    "testPathIgnorePatterns": ["node_modules"],
+    "transformIgnorePatterns": ["node_modules"]
   },
   "author": "Pascal Noel",
   "license": "ISC",
-  "dependencies": {},
   "devDependencies": {
     "jest": "^26.6.1"
   }

@@ -1,5 +1,4 @@
-const stream = require("stream");
-const { Transform } = require("stream");
+import { Transform } from "stream";
 
 /************************************BEGIN************************************/
 /* helper variables and constants to help collect data to create the desired line objects.
@@ -14,7 +13,7 @@ let totalLines = 0;
 // Create variable to hold the string data of a buffer if the end of a line is missing "\n"
 let strStore = "";
 
-const calculateBytesPerSec = (chunkData) => {
+export const calculateBytesPerSec = (chunkData) => {
   // convert the elapsed time from miliseconds to seconds
   const elapsedTimeSecs = chunkData.elapsedTime / 1000;
   return Math.floor(chunkData.lengthInBytes / elapsedTimeSecs);
@@ -106,4 +105,6 @@ process.stdin
   .pipe(summaryReportStream)
   .pipe(process.stdout);
 
-module.exports = calculateBytesPerSec;
+process.stdin.on("end", () => console.log("Stdin has no more data"));
+
+process.stdout.on("end", () => console.log("Stdin has no more data"));
